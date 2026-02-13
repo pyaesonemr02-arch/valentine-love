@@ -116,3 +116,40 @@ button:hover {
         opacity: 0;
     }
 }
+#unlock {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #111 0%, #000 100%);
+}
+
+#unlock .unlock-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 0, 100, 0.3);
+    width: 90%;
+    max-width: 350px;
+}
+
+#unlock h2 {
+    margin-bottom: 20px;
+}
+
+#unlock input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#unlock button {
+    width: 100%;
+}
