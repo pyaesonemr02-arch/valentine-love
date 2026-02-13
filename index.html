@@ -1,73 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Rennie 💖</title>
-
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
-<script defer src="confetti.js"></script>
-<script defer src="certificate.js"></script>
-<script defer src="script.js"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine’s Day, Rennie!</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-<!-- Cinematic Intro -->
-<section id="intro">
-    <div class="overlay"></div>
-    <div class="intro-content">
-        <h1 class="cinematic-text">For Rennie 💎</h1>
-        <p>From Pyae Sone Aung</p>
-        <button onclick="startExperience()">Enter My Heart 💖</button>
+    <div id="unlock-screen">
+        <h1>Enter the Code to Unlock</h1>
+        <input type="text" id="code-input" placeholder="Enter code">
+        <button onclick="unlock()">Unlock</button>
     </div>
-</section>
-
-<!-- Secure Unlock -->
-<section id="unlock" class="hidden">
-    <h2>🔐 Private Access</h2>
-    <input type="password" id="passcode" placeholder="Enter Our Secret">
-    <button onclick="checkPass()">Unlock</button>
-    <p id="error"></p>
-</section>
-
-<!-- Main Experience -->
-<section id="main" class="hidden">
-
-    <!-- Hero Section -->
-    <div class="hero">
-        <img src="assets/hero.jpg" alt="Our Photo">
-        <div class="hero-text">
-            <h1>Happy Valentine’s Day Rennie 💖</h1>
-            <div id="countdown"></div>
-        </div>
+    <div id="main-content" style="display: none;">
+        <!-- Main content including certificate and images go here -->
     </div>
-
-    <!-- Floating Hearts -->
-    <canvas id="hearts"></canvas>
-
-    <!-- Love Message -->
-    <div class="message">
-        <h2>My Forever 💎</h2>
-        <p>
-            Every second with you is magic.
-            This website is not code.
-            It is my heart written in technology.
-        </p>
-        <button onclick="launchConfetti()">Celebrate 🎉</button>
-    </div>
-
-    <!-- Certificate -->
-    <div class="certificate">
-        <h2>📜 Official Love Certificate</h2>
-        <canvas id="certificateCanvas"></canvas>
-        <button onclick="printCertificate()">🖨 Print Certificate</button>
-    </div>
-
-</section>
-
+    <script src="script.js"></script>
 </body>
 </html>
