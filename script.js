@@ -1,8 +1,12 @@
 const secretHash = btoa("676425"); // encoded
 
 function startExperience() {
-    document.getElementById("intro").classList.add("hidden");
-    document.getElementById("unlock").classList.remove("hidden");
+    document.getElementById("unlock").style.opacity = "0";
+setTimeout(() => {
+    document.getElementById("unlock").classList.add("hidden");
+    document.getElementById("main").classList.remove("hidden");
+}, 800);
+
 }
 
 function checkPass() {
@@ -62,4 +66,5 @@ function generateHearts() {
     }
     draw();
 }
+
 
