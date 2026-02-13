@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Access To My Heart</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin:0;
+    padding:0;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    text-align:center;
+    color:white;
+    overflow:hidden;
+}
+
+.container {
+    margin-top:80px;
+}
+
+.certificate {
+    background:white;
+    color:#e91e63;
+    padding:30px;
+    width:90%;
+    max-width:600px;
+    margin:auto;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(0,0,0,0.3);
+}
+
+h1 { font-size:32px; }
+
+button {
+    margin-top:20px;
+    padding:12px 25px;
+    font-size:18px;
+    background:#ff4d6d;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+button:hover {
+    background:#c9184a;
+}
+
+.heart {
+    position: fixed;
+    top:-10px;
+    font-size:20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<div id="login">
+    <h1>🔐 Enter Password To Access My Heart</h1>
+    <input type="password" id="pass" placeholder="Enter Secret Code">
+    <br><br>
+    <button onclick="check()">Unlock</button>
+</div>
+
+<div id="main" style="display:none;">
+<div class="container">
+<div class="certificate">
+<h1>🏆 Best Girlfriend Award 🏆</h1>
+<p>This certificate is proudly presented to</p>
+<h2>💖 YOUR_GIRL_NAME 💖</h2>
+<p>For being the strongest, cutest, and most amazing girl in my life.</p>
+<p>I love you more than words, more than code, more than WiFi 😘</p>
+<p><b>Happy Valentine's Day ❤️</b></p>
+<p id="date"></p>
+<button onclick="alert('I LOVE YOU FOREVER ❤️')">Click For Surprise</button>
+</div>
+</div>
+</div>
+
+<script>
+function check(){
+    var password = "iloveyou";
+    var user = document.getElementById("pass").value;
+    if(user === password){
+        document.getElementById("login").style.display="none";
+        document.getElementById("main").style.display="block";
+    } else {
+        alert("Wrong password 😝 Try again!");
+    }
+}
+
+document.getElementById("date").innerHTML = new Date().toDateString();
+
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = Math.random()*3+2 + "s";
+    document.body.appendChild(heart);
+    setTimeout(()=>{ heart.remove(); },5000);
+}
+
+setInterval(createHeart,300);
+</script>
+
+</body>
+</html>
