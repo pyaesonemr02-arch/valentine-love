@@ -1,4 +1,4 @@
-const secretHash = btoa("rennielove"); // encoded
+const secretHash = btoa("676425"); // encoded
 
 function startExperience() {
     document.getElementById("intro").classList.add("hidden");
@@ -62,3 +62,4 @@ function generateHearts() {
     }
     draw();
 }
+
