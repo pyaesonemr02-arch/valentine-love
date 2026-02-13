@@ -1,50 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Access To My Heart</title>
+<title>Rennie ❤️ Pyae Sone Aung</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
 body {
     margin:0;
-    padding:0;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    font-family: Arial, sans-serif;
-    text-align:center;
+    font-family:'Segoe UI', sans-serif;
+    overflow-x:hidden;
     color:white;
-    overflow:hidden;
+    background:black;
 }
 
-.container {
-    margin-top:80px;
+.hero {
+    height:100vh;
+    background:url('love.jpg') center/cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background-attachment:fixed;
 }
 
-.certificate {
+.hero h1 {
+    font-size:50px;
+    background:rgba(0,0,0,0.5);
+    padding:20px;
+    border-radius:15px;
+}
+
+.section {
+    padding:80px 20px;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    text-align:center;
+}
+
+.card {
     background:white;
     color:#e91e63;
     padding:30px;
-    width:90%;
     max-width:600px;
     margin:auto;
     border-radius:20px;
-    box-shadow:0 0 25px rgba(0,0,0,0.3);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
-h1 { font-size:32px; }
-
 button {
-    margin-top:20px;
     padding:12px 25px;
-    font-size:18px;
-    background:#ff4d6d;
-    color:white;
     border:none;
     border-radius:10px;
+    background:#ff4d6d;
+    color:white;
     cursor:pointer;
 }
 
-button:hover {
-    background:#c9184a;
+button:hover { background:#c9184a; }
+
+input {
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    width:200px;
 }
 
 .heart {
@@ -62,57 +81,105 @@ button:hover {
 
 <body>
 
-<audio autoplay loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
-<div id="login">
-    <h1>🔐 Enter Password To Access My Heart</h1>
-    <input type="password" id="pass" placeholder="Enter Secret Code">
-    <br><br>
-    <button onclick="check()">Unlock</button>
+<!-- LOGIN -->
+<div id="login" class="section">
+<h1>🔐 Private Love Portal</h1>
+<p>Only Rennie Can Enter ❤️</p>
+<input type="password" id="pass" placeholder="Secret Code">
+<br><br>
+<button onclick="unlock()">Unlock</button>
 </div>
 
 <div id="main" style="display:none;">
-<div class="container">
-<div class="certificate">
-<h1>🏆 Best Girlfriend Award 🏆</h1>
+
+<div class="hero">
+<h1>Rennie ❤️ Pyae Sone Aung</h1>
+<p>My Favorite Human In The World</p>
+</div>
+
+<div class="section">
+<h2>⏳ Countdown To Valentine's Day</h2>
+<h1 id="countdown"></h1>
+</div>
+
+<div class="section">
+<div class="card">
+<h2>🏆 Best Girlfriend Award</h2>
 <p>This certificate is proudly presented to</p>
-<h2>💖 Rennie 💖</h2>
-<p>For being the strongest, cutest, and most amazing girl in my life.</p>
-<p>I love you more than words, more than code, more than WiFi 😘</p>
+<h1>💖 Rennie 💖</h1>
+<p>For being the most beautiful soul in my life.</p>
+<p>I love you more than anything in this world.</p>
 <p><b>Happy Valentine's Day ❤️</b></p>
 <p id="date"></p>
-<button onclick="alert('I LOVE YOU FOREVER ❤️')">Click For Surprise</button>
-</div>
+<p>Signed with love,</p>
+<h3>Pyae Sone Aung ❤️</h3>
+<button onclick="window.print()">Download Certificate</button>
 </div>
 </div>
 
+<div class="section">
+<h2>💌 A Message For You</h2>
+<p>
+From the first moment until forever,
+I choose you.
+Every single day.
+</p>
+</div>
+
+</div>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-function check(){
-    var password = "iloveyou";
-    var user = document.getElementById("pass").value;
-    if(user === password){
+
+// PASSWORD
+function unlock(){
+    if(document.getElementById("pass").value === "rennielove"){
         document.getElementById("login").style.display="none";
         document.getElementById("main").style.display="block";
+        confetti();
     } else {
-        alert("Wrong password 😝 Try again!");
+        alert("Wrong password 😝");
     }
 }
 
+// DATE
 document.getElementById("date").innerHTML = new Date().toDateString();
 
+// VALENTINE COUNTDOWN
+var valentine = new Date("2026-02-14T00:00:00").getTime();
+setInterval(function(){
+    var now = new Date().getTime();
+    var diff = valentine - now;
+
+    if(diff > 0){
+        var days = Math.floor(diff/(1000*60*60*24));
+        var hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+        var minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+        var seconds = Math.floor((diff%(1000*60))/1000);
+
+        document.getElementById("countdown").innerHTML =
+        days+"d "+hours+"h "+minutes+"m "+seconds+"s ❤️";
+    } else {
+        document.getElementById("countdown").innerHTML =
+        "💖 Happy Valentine's Day Rennie 💖";
+    }
+},1000);
+
+// HEARTS
 function createHeart(){
     const heart = document.createElement("div");
     heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random()*100 + "vw";
-    heart.style.animationDuration = Math.random()*3+2 + "s";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=Math.random()*3+2+"s";
     document.body.appendChild(heart);
-    setTimeout(()=>{ heart.remove(); },5000);
+    setTimeout(()=>{heart.remove();},5000);
 }
-
 setInterval(createHeart,300);
+
 </script>
 
 </body>
